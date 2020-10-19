@@ -47,9 +47,9 @@ def launch_ssh(token,
     os.system('echo "X11UseLocalhost no" >> /etc/ssh/sshd_config')
     os.system("echo 'X11Forwarding yes' >> /etc/ssh/sshd_config")
     #os.system("echo 'ForwardAgent yes' >> /etc/ssh/sshd_config")
-    #os.system("echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config")
-    #os.system('echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc')
-    #os.system('echo "export LD_LIBRARY_PATH" >> /root/.bashrc')
+    os.system("echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config")
+    os.system('echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc')
+    os.system('echo "export LD_LIBRARY_PATH" >> /root/.bashrc')
     
 
     if password:
