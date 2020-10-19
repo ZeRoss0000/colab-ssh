@@ -37,7 +37,7 @@ def launch_ssh(token,
 
     # Install the openssh server
     os.system(
-        "apt-get -qq update && apt-get -qq install -o=Dpkg::Use-Pty=0 openssh-server -Y pwgen > /dev/null")
+        "apt-get -qq update && apt-get -qq install -o=Dpkg::Use-Pty=0 openssh-server pwgen > /dev/null")
 
     # Set the password
     run_with_pipe("echo root:{} | chpasswd".format(password))
@@ -46,7 +46,12 @@ def launch_ssh(token,
     run_command("mkdir -p /var/run/sshd")
     os.system('echo "X11UseLocalhost no" >> /etc/ssh/sshd_config')
     os.system("echo 'X11Forwarding yes' >> /etc/ssh/sshd_config")
+    os.system("echo 'ForwardAgent yes' >> /etc/ssh/sshd_config")
     os.system("echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config")
+    os.system('echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc')
+    os.system('echo "export LD_LIBRARY_PATH" >> /root/.bashrc')
+    
+
     if password:
         os.system('echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config')
 
