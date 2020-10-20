@@ -44,9 +44,8 @@ def launch_ssh(token,
 
     # Configure the openSSH server
     run_command("mkdir -p /var/run/sshd")
-    os.system('echo "X11UseLocalhost no" >> /etc/ssh/sshd_config')
-    os.system("echo 'X11Forwarding yes' >> /etc/ssh/sshd_config")
-    #os.system("echo 'ForwardAgent yes' >> /etc/ssh/sshd_config")
+    #os.system('echo "X11UseLocalhost no" >> /etc/ssh/sshd_config')
+    #os.system("echo 'X11Forwarding yes' >> /etc/ssh/sshd_config")
     os.system("echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config")
     os.system('echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc')
     os.system('echo "export LD_LIBRARY_PATH" >> /root/.bashrc')
